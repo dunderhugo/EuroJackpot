@@ -2,12 +2,17 @@
 using System.ComponentModel.Design;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
+using System;
+using System.Globalization;
 
 namespace EuroJackpot
 {
 	internal class Program
 	{
-
+		static string FormatOutput(double value)
+		{
+			return value.ToString("N0");
+		}
 		public static (double[], double[]) RandomJackpotNum()
 		{
 			double[] arrayOne = new double[5];
@@ -58,7 +63,6 @@ namespace EuroJackpot
 				if (commando == 0)
 				{
 					double timesRolled = 0;
-					
 					do
 					{
 						int correct = 0;
@@ -79,7 +83,6 @@ namespace EuroJackpot
                         }
 					}
 					while (true);
-					
 				}
 				if (commando > 0)
 				{
@@ -88,6 +91,7 @@ namespace EuroJackpot
 						int correctArrOne = 0;
 						int correctArrTwo = 0;
 						(double[] winningArrOne, double[] winningArrTwo) = RandomJackpotNum();
+						// Checks if correct numbers from lottery
 						for (int check = 0; check < winningArrOne.Length; check++)
 						{
 							if (winningArrOne.Contains(myNum1[check])) correctArrOne++;
@@ -96,7 +100,6 @@ namespace EuroJackpot
 						{
 							if (winningArrTwo.Contains(myNum2[check])) correctArrTwo++;
 						}
-
 						if ((correctArrTwo + correctArrOne) == 3)
 						{
 							// 3 + 0 
@@ -156,11 +159,15 @@ namespace EuroJackpot
 				{
 					timesWon += i;
 				}
-
 				double cost = 25;
-				Console.WriteLine($"Amount of times won with {commando} spins");
-				Console.WriteLine($"Total times won: {timesWon}");
-				Console.WriteLine($"You won {timesWon/commando*100}% of the rolls");
+				string formattedTimesWon = FormatOutput(timesWon);
+				string formattedCommando = FormatOutput(commando);
+				string formattedSumWon = FormatOutput(sumWon);
+				string formatWinnings= FormatOutput(timesWon/commando*100);
+				string formatMoneySpent = FormatOutput(commando * cost);
+				Console.WriteLine($"Amount of times won with {formattedCommando} spins");
+				Console.WriteLine($"Total times won: {formattedTimesWon}");
+				Console.WriteLine($"You won {formatWinnings}% of the rolls");
 				Console.WriteLine($"3 + 0	{winnings[0]}		Money won = {winnings[0] * one}kr");
 				Console.WriteLine($"2 + 1	{winnings[1]}		Money won = {winnings[1] * two}kr");
 				Console.WriteLine($"1 + 2	{winnings[2]}		Money won = {winnings[2] * three}kr");
@@ -173,8 +180,8 @@ namespace EuroJackpot
 				Console.WriteLine($"5 + 1	{winnings[9]}		Money won = {winnings[9] * ten}kr");
 				Console.WriteLine($"4 + 2	{winnings[10]}		Money won = {winnings[10] * eleven}kr");
 				Console.WriteLine($"JACKPOT! {winnings[11]}		Money won = {winnings[11] * twelve}kr");
-				Console.WriteLine($"You spent {commando * cost}kr on euro jackpot");
-				Console.WriteLine($"Amount won with {commando} spins = {sumWon}kr" );
+				Console.WriteLine($"You spent {formatMoneySpent}kr on euro jackpot");
+				Console.WriteLine($"Amount won with {formattedCommando} spins = {formattedSumWon}kr" );
 				
 
 			}
