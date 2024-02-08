@@ -141,19 +141,13 @@ namespace EuroJackpot
 						}
 					}
 				}
-				double one = 199;
-				double two = 156;
-				double three = 112;
-				double four = 237;
-				double five = 309;
-				double six = 3300;
-				double seven = 4475;
-				double eight = 10025;
-				double nine = 59230;
-				double ten = 8630449;
-				double eleven = 8630449;
-				double twelve = 707000000;
-				double sumWon = winnings[0] * one + winnings[1] * two + winnings[2] * three + winnings[3] * four + winnings[4] * five + winnings[5] * six + winnings[6] * seven + winnings[7] * eight + winnings[8] * nine + winnings[9] * ten + winnings[10] * eleven + winnings[11] * twelve;
+				double[] moneyToWin = { 199, 156, 112, 237, 309, 3300, 4475, 10025, 59230, 8630449, 8630449, 707000000 };
+
+				double sumWon = 0;
+				for (int i = 0;i < moneyToWin.Length; i++)
+				{
+					sumWon = sumWon + moneyToWin[i] * winnings[i];
+				}
 				double timesWon = 0;
 				foreach (double i in winnings)
 				{
@@ -168,18 +162,18 @@ namespace EuroJackpot
 				Console.WriteLine($"Amount of times won with {formattedCommando} spins");
 				Console.WriteLine($"Total times won: {formattedTimesWon}");
 				Console.WriteLine($"You won {formatWinnings}% of the rolls");
-				Console.WriteLine($"3 + 0	{winnings[0]}		Money won = {winnings[0] * one}kr");
-				Console.WriteLine($"2 + 1	{winnings[1]}		Money won = {winnings[1] * two}kr");
-				Console.WriteLine($"1 + 2	{winnings[2]}		Money won = {winnings[2] * three}kr");
-				Console.WriteLine($"4 + 0	{winnings[3]}		Money won = {winnings[3] * four}kr");
-				Console.WriteLine($"3 + 1	{winnings[4]}		Money won = {winnings[4] * five}kr");
-				Console.WriteLine($"2 + 2	{winnings[5]}		Money won = {winnings[5] * six}kr");
-				Console.WriteLine($"5 + 0	{winnings[6]}		Money won = {winnings[6] * seven}kr");
-				Console.WriteLine($"4 + 1	{winnings[7]}		Money won = {winnings[7] * eight}kr");
-				Console.WriteLine($"3 + 2	{winnings[8]}		Money won = {winnings[8] * nine}kr");
-				Console.WriteLine($"5 + 1	{winnings[9]}		Money won = {winnings[9] * ten}kr");
-				Console.WriteLine($"4 + 2	{winnings[10]}		Money won = {winnings[10] * eleven}kr");
-				Console.WriteLine($"JACKPOT! {winnings[11]}		Money won = {winnings[11] * twelve}kr");
+				Console.WriteLine($"3 + 0	{winnings[0]}		Money won = {winnings[0] * moneyToWin[0]}kr");
+				Console.WriteLine($"2 + 1	{winnings[1]}		Money won = {winnings[1] * moneyToWin[1]}kr");
+				Console.WriteLine($"1 + 2	{winnings[2]}		Money won = {winnings[2] * moneyToWin[2]}kr");
+				Console.WriteLine($"4 + 0	{winnings[3]}		Money won = {winnings[3] * moneyToWin[3]}kr");
+				Console.WriteLine($"3 + 1	{winnings[4]}		Money won = {winnings[4] * moneyToWin[4]}kr");
+				Console.WriteLine($"2 + 2	{winnings[5]}		Money won = {winnings[5] * moneyToWin[5]}kr");
+				Console.WriteLine($"5 + 0	{winnings[6]}		Money won = {winnings[6] * moneyToWin[6]}kr");
+				Console.WriteLine($"4 + 1	{winnings[7]}		Money won = {winnings[7] * moneyToWin[7]}kr");
+				Console.WriteLine($"3 + 2	{winnings[8]}		Money won = {winnings[8] * moneyToWin[8]}kr");
+				Console.WriteLine($"5 + 1	{winnings[9]}		Money won = {winnings[9] * moneyToWin[9]}kr");
+				Console.WriteLine($"4 + 2	{winnings[10]}		Money won = {winnings[10] * moneyToWin[10]}kr");
+				Console.WriteLine($"JACKPOT! {winnings[11]}		Money won = {winnings[11] * moneyToWin[11]}kr");
 				Console.WriteLine($"You spent {formatMoneySpent}kr on euro jackpot");
 				Console.WriteLine($"Amount won with {formattedCommando} spins = {formattedSumWon}kr" );
 				
