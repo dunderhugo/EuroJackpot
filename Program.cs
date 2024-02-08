@@ -161,27 +161,17 @@ namespace EuroJackpot
 				string formatMoneySpent = FormatOutput(commando * cost);
 				Console.WriteLine($"Amount of times won with {formattedCommando} spins");
 				Console.WriteLine($"Total times won: {formattedTimesWon}");
+
+				for (int i = 0; i < moneyToWin.Length; i++)
+				{
+					string[] winningGuesses = { "3 + 0", "2 + 1", "1 + 2", "4 + 0", "3 + 1", "2 + 2", "5 + 0", "4 + 1", "3 + 2", "5 + 1", "4 + 2", "5 + 2" };
+					Console.WriteLine($"{winningGuesses[i]}\t{winnings[i]}\tMoney won = {winnings[i]* moneyToWin[i]}");
+				}
 				Console.WriteLine($"You won {formatWinnings}% of the rolls");
-				Console.WriteLine($"3 + 0	{winnings[0]}		Money won = {winnings[0] * moneyToWin[0]}kr");
-				Console.WriteLine($"2 + 1	{winnings[1]}		Money won = {winnings[1] * moneyToWin[1]}kr");
-				Console.WriteLine($"1 + 2	{winnings[2]}		Money won = {winnings[2] * moneyToWin[2]}kr");
-				Console.WriteLine($"4 + 0	{winnings[3]}		Money won = {winnings[3] * moneyToWin[3]}kr");
-				Console.WriteLine($"3 + 1	{winnings[4]}		Money won = {winnings[4] * moneyToWin[4]}kr");
-				Console.WriteLine($"2 + 2	{winnings[5]}		Money won = {winnings[5] * moneyToWin[5]}kr");
-				Console.WriteLine($"5 + 0	{winnings[6]}		Money won = {winnings[6] * moneyToWin[6]}kr");
-				Console.WriteLine($"4 + 1	{winnings[7]}		Money won = {winnings[7] * moneyToWin[7]}kr");
-				Console.WriteLine($"3 + 2	{winnings[8]}		Money won = {winnings[8] * moneyToWin[8]}kr");
-				Console.WriteLine($"5 + 1	{winnings[9]}		Money won = {winnings[9] * moneyToWin[9]}kr");
-				Console.WriteLine($"4 + 2	{winnings[10]}		Money won = {winnings[10] * moneyToWin[10]}kr");
-				Console.WriteLine($"JACKPOT! {winnings[11]}		Money won = {winnings[11] * moneyToWin[11]}kr");
 				Console.WriteLine($"You spent {formatMoneySpent}kr on euro jackpot");
 				Console.WriteLine($"Amount won with {formattedCommando} spins = {formattedSumWon}kr" );
-				
-
 			}
 			while (true);
-
-
 		}
 	}
 }
